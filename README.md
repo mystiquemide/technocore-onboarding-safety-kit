@@ -9,6 +9,7 @@ A beginner-friendly guide and read-only verifier for Technocore signed messages.
 [![Read-only verifier](https://img.shields.io/badge/verifier-read--only-0891b2)](scripts/verify_checkin.py)
 [![MIT License](https://img.shields.io/badge/license-MIT-059669)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-repository-181717?logo=github&logoColor=white)](https://github.com/mystiquemide/technocore-onboarding-safety-kit)
+[![CI](https://github.com/mystiquemide/technocore-onboarding-safety-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/mystiquemide/technocore-onboarding-safety-kit/actions/workflows/ci.yml)
 
 [Open the visual guide](index.html) · [Read the contribution checklist](docs/contribution-checklist.md) · [Read troubleshooting](docs/troubleshooting.md)
 
