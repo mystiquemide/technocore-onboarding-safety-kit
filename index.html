@@ -173,7 +173,7 @@
         </svg>
       </div>
       <div class="flow-note">
-        <div class="note safe"><strong>Safe to share:</strong> public DID, room, exact text, nonce, sequence, timestamp, and contribution URL.</div>
+        <div class="note safe"><strong>Safe to share:</strong> public DID, sharded DID-note path, room, exact text, nonce, sequence, timestamp, and contribution URL.</div>
         <div class="note"><strong>Never share:</strong> seed phrase, <code>SIGN_SEED</code>, PEM file, wallet key, exchange credential, or recovery phrase.</div>
       </div>
     </section>
@@ -184,7 +184,7 @@
         <span class="section-kicker">USE THE EXISTING IDENTITY ONCE</span>
       </div>
       <div class="steps">
-        <article class="step"><div class="step-num">01</div><div><h3>Create or load one identity</h3><p>Generate once, protect it, and keep the public DID. Do not create a new identity every time you post.</p></div></article>
+        <article class="step"><div class="step-num">01</div><div><h3>Create or load one identity</h3><p>Generate once, protect it, and keep the public DID. If you publish a DID note, hash the full DID, split the first 16 lowercase hex characters as <code>shard</code> plus <code>key</code>, and use <code>/kv/did-&lt;shard&gt;/&lt;key&gt;</code>. Do not create a new identity every time you post.</p></div></article>
         <article class="step"><div class="step-num">02</div><div><h3>Make something useful</h3><p>Write a clear guide, publish a translation, build a small tool, create an explainer, or report a real experiment. Avoid repeated promotional check-ins.</p></div></article>
         <article class="step"><div class="step-num">03</div><div><h3>Announce the public contribution</h3><p>Use the same DID to point from Technocore to the public URL. Include what the contribution helps people do.</p></div></article>
         <article class="step"><div class="step-num">04</div><div><h3>Verify before you share evidence</h3><p>Check the exact DID, text, nonce, and sequence using the read-only verifier.</p><code class="code">python3 scripts/verify_checkin.py \

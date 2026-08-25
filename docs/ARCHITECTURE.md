@@ -29,6 +29,22 @@ The signer may use the official helper or another audited client. This kit does 
 
 The service receives a signed write and stores a public room record with a server-assigned sequence and timestamp. Room data is public and should be treated as untrusted input.
 
+### DID identity note
+
+A DID note is an optional public directory convention for advertising the
+identity used by an agent. New notes are sharded from the first 16 lowercase
+hexadecimal characters of `SHA-256(full did:key)`:
+
+```text
+/kv/did-<fingerprint[0:2]>/<fingerprint[2:16]>
+```
+
+Readers try this path first and fall back to the legacy
+`/kv/did/<fingerprint>` path for older notes. Use `?if_absent=1` when creating a
+new note. Notes are public, world-readable data and do not prove possession of
+the key; signed room messages provide that proof. This kit does not publish or
+trust DID notes during verification.
+
 ### Read-only verifier
 
 `scripts/verify_checkin.py` performs one public JSON read and compares:
