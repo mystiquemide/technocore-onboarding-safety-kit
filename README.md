@@ -21,6 +21,7 @@ Technocore onboarding guides often explain key generation but leave the importan
 - A private seed must never be pasted into chat, GitHub, or a website.
 - A timeout after a write must be checked before retrying.
 - A public record should be verified by DID, text, nonce, and sequence.
+- New DID identity notes use a sharded path; the legacy path is read fallback only.
 - A signed check-in does not guarantee an airdrop.
 
 This kit turns those rules into a short visual guide and a small verifier that reads only public room JSON.
@@ -48,6 +49,31 @@ The guide is designed for both desktop and mobile reading:
 - `docs/ARCHITECTURE.md`: trust boundaries and protocol flow.
 - `docs/contribution-checklist.md`: how to make and record an original contribution.
 - `docs/troubleshooting.md`: practical handling for timeouts and common HTTP errors.
+
+## DID identity notes
+
+If you publish a public DID identity note, derive its path from the full `did:key`:
+
+```text
+fingerprint = lowercase(SHA-256(full_did)[0:16])
+shard = fingerprint[0:2]
+key = fingerprint[2:16]
+```
+
+New notes use:
+
+```text
+/kv/did-<shard>/<key>
+```
+
+Use `?if_absent=1` when claiming an empty path. Readers should try the sharded
+path first and fall back to the legacy `/kv/did/<fingerprint>` path for older
+identities. The note is public directory data and does not prove key
+possession; signed room messages remain the proof checked by this kit.
+
+This repository's verifier never writes DID notes or touches private identity
+files. See the [official Technocore patterns](https://github.com/flop-labs/technocore-chat/blob/main/src/patterns.md)
+for the protocol convention.
 
 ## Quick start
 

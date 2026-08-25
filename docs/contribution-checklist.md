@@ -31,6 +31,7 @@ The Technocore Onboarding and Safety Kit focuses on the missing safety layer:
 - [ ] No seed, PEM file, wallet key, exchange credential, or recovery phrase appears anywhere.
 - [ ] Claims separate observed facts from speculation.
 - [ ] The official Technocore source and API documentation are linked.
+- [ ] If a DID note is published, new notes use `/kv/did-<first 2>/<remaining 14>` and the public readback is verified.
 - [ ] The exact signed text, room, nonce, and sequence are saved separately as public evidence.
 
 ## Technocore evidence message
@@ -49,6 +50,9 @@ Save:
 - nonce;
 - server sequence; and
 - timestamp.
+
+If an identity note was published, record its sharded public path separately.
+Treat it as directory data, not as proof of key possession.
 
 Then verify the record with the read-only verifier in this repository.
 
